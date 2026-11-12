@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily Earnings 3X Plus</title>
+<style>
+:root{--bg:#071426;--panel:#10233d;--line:#284766;--text:#f4f7ff;--muted:#b9c8dc;--a:#21d4a0;--b:#6c8cff;--c:#ffbf69}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#071426,#101b35 55%,#172342);color:var(--text);font-family:Arial,sans-serif}
+header{background:#09172beF;border-bottom:1px solid var(--line);padding:15px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;position:sticky;top:0;z-index:5}
+.logo{font-size:22px;font-weight:800}.logo span,.accent{color:var(--a)}
+nav{display:flex;gap:14px;flex-wrap:wrap}nav a{color:#eaf1ff;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--a)}.btn{background:linear-gradient(110deg,var(--a),#6ce7c2);color:#062019;border:0;border-radius:9px;padding:12px 18px;font-weight:800;cursor:pointer}
+.btn.secondary{background:#203958;color:#fff;border:1px solid #527096}.container{max-width:1120px;margin:auto;padding:24px}
+.page{display:none}.page.active{display:block}.panel{background:linear-gradient(145deg,#122844,#0d1d34);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 12px 35px #0003}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:25px;align-items:center;min-height:420px}
+.hero h1{font-size:clamp(42px,7vw,68px);line-height:1.02;margin:10px 0 18px;letter-spacing:-1.5px}
+.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:580px}
+.hero-art{min-height:390px;border-radius:24px;background:radial-gradient(circle at 50% 38%,#3562a5,#172b55 42%,#101a30 75%);display:flex;align-items:center;justify-content:center;border:1px solid #496a9c;box-shadow:inset 0 0 50px #91b5ff22}
+.brand-card{width:min(82%,360px);min-height:300px;border-radius:25px;background:linear-gradient(145deg,#132c4b,#172a53 55%,#087f70);border:2px solid #7cebd0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;box-shadow:0 0 38px #34d9bb55}
+.brand-card .symbol{font-size:64px}.brand-card strong{font-size:28px;line-height:1.25}.brand-card small{margin-top:12px;color:#d8fff5;letter-spacing:2px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.plan,.stat,.taskbox{background:#0a1b31;border:1px solid var(--line);border-radius:14px;padding:17px}
+.plan h3{margin:0 0 10px;color:#d9e7ff}.amount{font-size:25px;font-weight:800;color:var(--c)}.muted,.small{color:var(--muted);font-size:14px;line-height:1.55}
+label{display:block;font-size:14px;color:#dbe7f7;margin-top:10px}
+input,select{width:100%;padding:13px;margin:7px 0 12px;border:1px solid #3b5878;background:#07172b;color:#fff;border-radius:8px}
+input[type=file]{padding:9px}video{width:100%;max-height:260px;background:#000;border-radius:10px;margin-top:10px}
+.taskrow{padding:15px 0;border-bottom:1px solid #29415e}.taskrow:last-child{border:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.hidden{display:none!important}
+.history{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}.history th,.history td{padding:9px;border-bottom:1px solid #2b4564;text-align:left}
+.notice{background:#332b19;border:1px solid #806b36;color:#ffe8ad;padding:12px;border-radius:10px;font-size:13px;line-height:1.55;margin:14px 0}
+footer{text-align:center;border-top:1px solid var(--line);padding:25px;color:#9fb0c8;margin-top:25px}
+@media(max-width:780px){.hero,.two{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero-art{min-height:300px}header{position:static}.container{padding:15px}}
+
+/* Modern bright dashboard theme */
+:root{--bg:#f3f7ff;--panel:#ffffff;--line:#e2e8f5;--text:#17233c;--muted:#66748d;--a:#2878ff;--b:#8757f5;--c:#f59e0b}
+body{background:linear-gradient(135deg,#f4f8ff 0%,#f8f5ff 52%,#effbff 100%);color:var(--text)}
+header{background:#ffffffed;border-bottom:1px solid #e5eaf5;box-shadow:0 5px 22px #243b6310}
+.logo{color:#17233c}nav a{color:#394765;font-weight:700}nav a:hover{color:#2878ff}
+.panel{background:#fff;border:1px solid #e5eaf5;box-shadow:0 14px 38px #30466d12;color:#17233c}
+.hero-art{background:radial-gradient(circle at 50% 35%,#dce9ff,#e9e4ff 48%,#dff8f5 100%);border:1px solid #dce5f5;box-shadow:inset 0 0 45px #ffffffaa}
+.brand-card{background:linear-gradient(145deg,#ffffff,#e9f0ff 55%,#dff9f2);border:2px solid #fff;box-shadow:0 18px 45px #496bb333;color:#20345a}
+.brand-card small{color:#48627f}
+.plan,.stat,.taskbox{background:linear-gradient(145deg,#fff,#f6f8ff);border:1px solid #e5eaf5;box-shadow:0 8px 22px #30466d0b;color:#17233c}
+.stat{position:relative;overflow:hidden}.stat:before{content:"";display:block;height:5px;position:absolute;left:0;right:0;top:0;background:linear-gradient(90deg,#2878ff,#8a5cf6,#20c9a5)}
+.stat h2{color:#263f70;font-size:clamp(23px,4vw,30px)}
+input,select{background:#f8faff;color:#17233c;border:1px solid #d8e1f0}input::placeholder{color:#98a5ba}label{color:#394765}
+.btn{background:linear-gradient(110deg,#2878ff,#7659ed);color:#fff;box-shadow:0 7px 16px #4779df2b}.btn.secondary{background:#fff;color:#35527e;border:1px solid #d8e2f2;box-shadow:none}
+.notice{background:#fff8e8;border:1px solid #f3d99d;color:#76551b}
+.history th,.history td{border-bottom:1px solid #e7edf7;color:#33425e}.taskrow{border-bottom:1px solid #e7edf7}
+footer{color:#7a879d;border-color:#e4eaf4}
+#dashboard .grid .stat:nth-child(1){background:linear-gradient(135deg,#eaf2ff,#fff)}
+#dashboard .grid .stat:nth-child(2){background:linear-gradient(135deg,#e9fbf5,#fff)}
+#dashboard .grid .stat:nth-child(3){background:linear-gradient(135deg,#f2edff,#fff)}
+#dashboard h2,#admin h2{color:#20365f}
+#admin .taskbox{background:#f8faff}
+.request-shot{display:block;width:100%;max-width:420px;max-height:340px;object-fit:contain;background:#fff;border:1px solid #dce5f2;border-radius:12px;padding:6px;margin:10px 0}
+@media(max-width:780px){header{background:#fff}.hero-art{min-height:280px}}
+
+
+/* Design 5 — Modern Dark Premium dashboard */
+:root{--bg:#050d16;--panel:#081925;--line:#123a3c;--text:#edf8f6;--muted:#8fa9ad;--a:#00d994;--b:#168cff;--c:#f6b323}
+html,body{min-height:100%;}body{margin:0;background:#050d16;color:#edf8f6;font-family:Inter,Arial,sans-serif;font-size:14px}
+.topbar{height:76px;position:fixed;z-index:20;left:0;right:0;top:0;padding:0 28px 0 28px;background:#07131d;border-bottom:1px solid #15343a;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 28px #0004}
+.logo{display:flex;align-items:center;gap:12px;color:#f4fffd;font-size:17px}.brand-icon{font-size:31px;color:#00d99a}.logo small{display:block;color:#8da8ad;font-size:11px;font-weight:500;margin-top:4px;letter-spacing:.6px}
+.top-right{display:flex;align-items:center;gap:22px}.today-label{font-size:12px;color:#9cb2b5}.bell{background:none;border:0;color:#e7f8f4;font-size:22px}.user-chip{display:flex;align-items:center;gap:9px;font-size:12px}.user-chip small{display:block;color:#8da8ad;margin-top:3px}.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(140deg,#e4b88a,#805d48);display:grid;place-items:center;color:#17231f;font-weight:900}.top-login{padding:8px 13px!important}
+.sidebar{position:fixed;z-index:15;left:0;top:76px;bottom:0;width:238px;background:#07131d;border-right:1px solid #123238;padding:22px 14px;display:flex;flex-direction:column;justify-content:space-between}.sidebar nav{display:flex;flex-direction:column;gap:7px}.sidebar .side-link{display:flex;align-items:center;gap:13px;padding:12px 13px;color:#c0d0d1;text-decoration:none;border-radius:9px;font-size:13px;font-weight:600}.side-link:first-child,.side-link.active{background:linear-gradient(100deg,#00a85f,#007e55);color:#fff;box-shadow:0 5px 16px #00b76b30}.side-link:hover{background:#102a30;color:#fff}.side-link.logout-link{margin-top:20px;color:#ff777b;border-top:1px solid #18343a;border-radius:0;padding-top:20px}.help-card{border:1px solid #1b4547;border-radius:13px;padding:15px;background:linear-gradient(145deg,#0c282a,#071a22);text-align:center}.help-card .gift{font-size:27px;color:#ffc43d}.help-card p{font-size:11px;color:#93aaad;line-height:1.5}.help-button,.refer-card button{background:#00d994;color:#06251b;border:0;border-radius:20px;padding:8px 18px;font-weight:800;cursor:pointer}
+.container{max-width:none;margin:0 0 0 238px;padding:100px 28px 25px;min-height:calc(100vh - 100px)}footer{margin-left:238px;color:#789194;border-color:#18343a}.page{display:none}.page.active{display:block}.panel,.content-card{background:#081a25;border:1px solid #174047;border-radius:13px;padding:18px;box-shadow:0 12px 28px #0002;color:#edf8f6}.dash-wrap{max-width:1500px;margin:0 auto}.welcome-banner{min-height:125px;background:linear-gradient(110deg,#0c2c37,#071d2d 65%,#092c35);border:1px solid #185057;border-radius:14px;padding:23px 26px;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative}.welcome-banner h1{font-size:25px;margin:7px 0;color:#f5fffd}.welcome-banner p{margin:0;color:#a8c1c2}.eyebrow{font-size:10px;letter-spacing:2px;color:#00d994;font-weight:800}.welcome-art{font-size:56px;color:#00d994;text-align:center;text-shadow:0 0 25px #00d99466}.welcome-art small{display:block;font-size:10px;letter-spacing:2px;color:#b7d2d1;text-shadow:none}
+.summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:16px 0}.summary-card{min-height:90px;border-radius:12px;padding:15px;display:flex;align-items:center;gap:13px;border:1px solid #17605a;background:linear-gradient(120deg,#073b30,#092b2d)}.summary-card:nth-child(2){background:linear-gradient(120deg,#063a53,#082a3b);border-color:#155879}.summary-card:nth-child(3){background:linear-gradient(120deg,#29204f,#181e42);border-color:#4b397d}.summary-card:nth-child(4){background:linear-gradient(120deg,#463014,#302316);border-color:#765322}.summary-icon{width:43px;height:43px;flex:0 0 43px;border-radius:11px;background:#00c981;color:white;display:grid;place-items:center;font-size:23px}.summary-card:nth-child(2) .summary-icon{background:#168cff}.summary-card:nth-child(3) .summary-icon{background:#8759f5}.summary-card:nth-child(4) .summary-icon{background:#f2a51d}.summary-card small{display:block;color:#b6c9c8;font-size:11px}.summary-card strong{display:block;font-size:19px;margin:5px 0;color:#fff}.summary-card a,.card-heading a{color:#00d994;text-decoration:none;font-size:10px;font-weight:700}
+.dashboard-grid{display:grid;grid-template-columns:1.05fr 1.25fr .78fr;gap:14px}.content-card{padding:16px;min-width:0}.card-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.card-heading h3{font-size:14px;margin:0;color:#f1fbfa}.period-pill{font-size:10px;background:#07523e;color:#8fffd3;padding:5px 10px;border-radius:20px}.mini-task{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #17343a}.mini-task:last-of-type{border:0}.task-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:8px;color:white}.green-icon{background:#00a967}.blue-icon{background:#087ec9}.orange-icon{background:#bc741b}.mini-task div{flex:1}.mini-task b{font-size:11px;display:block}.mini-task small{font-size:10px;color:#8da9aa;display:block;margin-top:4px}.mini-task button{border:0;border-radius:6px;background:#00a85f;color:#fff;font-weight:700;padding:6px 12px;font-size:10px;cursor:pointer}.wide-button{width:100%;border:1px solid #087fbd;background:#073d61;color:#d9f5ff;border-radius:7px;padding:9px;margin-top:12px;font-weight:700}.chart-value{font-size:21px;font-weight:800;margin:8px 0 0}.chart-value span{font-size:10px;color:#00d994;font-weight:500}.earn-chart{width:100%;height:145px;margin-top:8px;overflow:visible}.chart-days{display:flex;justify-content:space-between;color:#799496;font-size:9px}.quick-action{display:block;width:100%;border:0;border-radius:8px;padding:13px;text-align:left;color:white;font-weight:800;margin:12px 0;cursor:pointer}.deposit-action{background:linear-gradient(90deg,#00b76b,#008a56)}.withdraw-action{background:linear-gradient(90deg,#087edb,#0754a8)}.referral-action{background:linear-gradient(90deg,#713be0,#4b2aa8)}.lower-grid{display:grid;grid-template-columns:1.8fr .8fr;gap:14px;margin-top:14px}.refer-card{border:1px solid #17605a;border-radius:13px;background:linear-gradient(120deg,#073a30,#09252d);padding:18px;display:flex;align-items:center;gap:15px}.refer-card .gift{font-size:40px;color:#ffc43d}.refer-card h3{margin:0 0 5px}.refer-card p{font-size:11px;color:#9eb6b6;margin:0 0 12px}.history{font-size:11px}.history th,.history td{padding:11px 9px;border-bottom:1px solid #17343a;color:#bfd0d0}.history th{color:#8da9aa}.notice{background:#2b2517;border:1px solid #64512b;color:#f5dda0}.dashboard-actions{display:none}.btn{background:linear-gradient(110deg,#00d994,#00a96b);color:#05251b;border:0;border-radius:8px;padding:12px 18px;font-weight:800;cursor:pointer;box-shadow:0 6px 15px #00bd7625}.btn.secondary{background:#102b35;color:#d9eeee;border:1px solid #28515a;box-shadow:none}.grid{grid-template-columns:repeat(3,1fr)}.plan,.stat,.taskbox{background:#0a202b;border:1px solid #1b444b;color:#edf8f6}.stat h2,#dashboard h2,#admin h2{color:#f1fffc}.muted,.small{color:#91aaad}label{color:#c9d9d8}input,select{background:#06151f;color:#effaf8;border:1px solid #28505a}input::placeholder{color:#6f898d}.taskrow{border-color:#1b3b41}.history th,.history td{border-color:#18383e;color:#c4d6d5}.hero-art{background:radial-gradient(circle at 50% 35%,#164f51,#0b2731 55%,#071923);border:1px solid #1b5555}.brand-card{background:linear-gradient(145deg,#0d3c37,#0d2635 55%,#075e4b);border-color:#00d994;color:white}.brand-card small{color:#b9e9dc}
+@media(max-width:900px){.sidebar{width:190px}.container{margin-left:190px;padding:94px 16px 20px}.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-grid{grid-template-columns:1fr 1fr}.quick-card{grid-column:1/-1}.lower-grid{grid-template-columns:1fr}footer{margin-left:190px}}
+@media(max-width:620px){.topbar{height:65px;padding:0 12px}.logo{font-size:13px}.brand-icon{font-size:25px}.top-right{gap:8px}.today-label,.bell{display:none}.user-chip{font-size:10px}.top-login{padding:7px 9px!important;font-size:11px}.sidebar{top:65px;width:62px;padding:12px 7px}.sidebar .side-link{justify-content:center;padding:13px 5px;font-size:18px}.sidebar .side-link span,.help-card b,.help-card p,.help-button{display:none}.help-card{padding:8px 2px}.help-card .gift{font-size:22px}.container{margin-left:62px;padding:80px 10px 15px}.welcome-banner{padding:16px;min-height:105px}.welcome-banner h1{font-size:19px}.welcome-art{font-size:36px}.summary-grid{gap:8px}.summary-card{padding:10px;gap:8px;min-height:80px}.summary-icon{width:32px;height:32px;flex-basis:32px;font-size:17px}.summary-card strong{font-size:14px}.summary-card small{font-size:9px}.dashboard-grid{grid-template-columns:1fr}.quick-card{grid-column:auto}.lower-grid{grid-template-columns:1fr}.content-card{padding:12px}.history{display:block;overflow-x:auto;white-space:nowrap}.grid,.two{grid-template-columns:1fr}footer{margin-left:62px}}
+
+
+/* Design 8 — Elegant Purple Gradient */
+:root{--bg:#160d3b;--panel:#28145b;--line:#6043a3;--text:#f8f3ff;--muted:#c7b9e8;--a:#c47bff;--b:#477dff;--c:#ffb36b}
+html,body{min-height:100%;}body{background:linear-gradient(135deg,#160d3b 0%,#28105e 48%,#51117c 100%);color:#f8f3ff;font-family:Inter,Arial,sans-serif}
+.topbar{background:#1b1048ed;border-bottom:1px solid #6746a8;box-shadow:0 8px 30px #08031e66}
+.logo,.welcome-banner h1,.card-heading h3{color:#fff}.brand-icon,.eyebrow{color:#e3a5ff}
+.sidebar{background:linear-gradient(180deg,#211052,#190b40);border-right:1px solid #6542a5}
+.sidebar .side-link{color:#e2d8fa}.side-link:first-child,.side-link.active{background:linear-gradient(100deg,#a65cff,#635bff);color:#fff;box-shadow:0 6px 18px #9c4dff55}.side-link:hover{background:#402078;color:#fff}
+.help-card,.panel,.content-card{background:linear-gradient(145deg,#2c1764,#21114e);border:1px solid #6946aa;color:#f8f3ff;box-shadow:0 14px 34px #09031e55}
+.welcome-banner{background:linear-gradient(110deg,#4b2189,#32136f 58%,#711c91);border:1px solid #a45bd5;box-shadow:inset 0 0 35px #d68aff18}
+.welcome-banner p,.help-card p,.refer-card p,.muted,.small{color:#c9b9e9}.welcome-art{color:#f3b5ff;text-shadow:0 0 28px #e8a2ff88}
+.summary-card{background:linear-gradient(135deg,#6232a2,#38206f);border:1px solid #a06be0}.summary-card:nth-child(2){background:linear-gradient(135deg,#245fba,#243b86);border-color:#638cff}.summary-card:nth-child(3){background:linear-gradient(135deg,#8736b5,#55228d);border-color:#c17aff}.summary-card:nth-child(4){background:linear-gradient(135deg,#b45a78,#713b85);border-color:#e79ac0}
+.summary-icon{background:#c45cff;color:#fff}.summary-card:nth-child(2) .summary-icon{background:#438cff}.summary-card:nth-child(3) .summary-icon{background:#e17aff}.summary-card:nth-child(4) .summary-icon{background:#ffae70}
+.summary-card small,.summary-card strong{color:#fff}.summary-card a,.card-heading a{color:#e4a5ff}
+.dashboard-grid{gap:14px}.content-card{background:linear-gradient(145deg,#2a175e,#1e1249)}.card-heading h3{color:#fff}.period-pill{background:#60358e;color:#f4d5ff}
+.mini-task{border-color:#51377f}.mini-task small,.chart-days{color:#b8a6dc}.mini-task button{background:linear-gradient(100deg,#9c55ef,#625cff)}.task-icon.green-icon{background:#20b987}.task-icon.blue-icon{background:#438cff}.task-icon.orange-icon{background:#f39a4c}
+.earn-chart polyline{stroke:#e58cff}.earn-chart g{fill:#e58cff}.earn-chart defs stop:first-child{stop-color:#dc82ff}
+.quick-action{box-shadow:0 7px 18px #08031e44}.deposit-action{background:linear-gradient(90deg,#21bd91,#168b83)}.withdraw-action{background:linear-gradient(90deg,#438cff,#3154d4)}.referral-action{background:linear-gradient(90deg,#c34bdf,#8538bc)}
+.refer-card{background:linear-gradient(120deg,#54218c,#9b2e9d);border:1px solid #bd6be1}.refer-card .gift{color:#ffd27a}.refer-card button,.help-button{background:linear-gradient(100deg,#ff8dc9,#d36aff);color:#32104d}
+.btn{background:linear-gradient(110deg,#c66cff,#695cff);color:#fff;box-shadow:0 7px 18px #a34aff35}.btn.secondary{background:#352064;color:#f5eaff;border:1px solid #7955b4;box-shadow:none}
+.plan,.stat,.taskbox{background:linear-gradient(145deg,#321b6d,#241451);border:1px solid #6745a0;color:#f8f3ff}.stat h2,#dashboard h2,#admin h2{color:#fff}
+input,select{background:#1b1044;color:#fff;border:1px solid #7253a8}input::placeholder{color:#a995cb}label{color:#e5d9fb}
+.history th,.history td{border-color:#50377d;color:#e1d5f5}.taskrow{border-color:#50377d}.notice{background:#46321d;border:1px solid #97713c;color:#ffe5b2}
+footer{color:#b9a7dc;border-color:#68469f}.request-shot{background:#21134b;border-color:#7655aa}
+@media(max-width:900px){.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-grid{grid-template-columns:1fr}.lower-grid{grid-template-columns:1fr}}
+@media(max-width:780px){.topbar{position:relative;height:auto;min-height:70px;padding:12px;flex-wrap:wrap}.sidebar{position:relative;top:auto;width:auto;bottom:auto;padding:10px}.sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.container{margin:0;padding:18px 12px;min-height:0}footer{margin-left:0}.top-right{gap:10px;flex-wrap:wrap}.welcome-banner{padding:18px}.summary-grid{grid-template-columns:1fr 1fr}}
+
+
+/* Compact three-dot page navigation */
+.menu-toggle{width:42px;height:42px;border:1px solid #7655b4;border-radius:12px;background:linear-gradient(145deg,#43227c,#281653);color:#fff;font-size:27px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.top-right{position:relative}
+.site-menu{position:fixed;z-index:50;right:22px;top:68px;width:245px;max-height:78vh;overflow:auto;padding:9px;background:linear-gradient(155deg,#32196d,#1d1049);border:1px solid #7955b4;border-radius:16px;box-shadow:0 18px 45px #08031eaa}
+.site-menu.hidden{display:none!important}.site-menu a{display:flex;align-items:center;gap:13px;padding:12px 13px;margin:2px 0;color:#f4eaff;text-decoration:none;border-radius:10px;font-size:14px;font-weight:650}
+.site-menu a:hover{background:linear-gradient(100deg,#a65cff,#635bff);color:#fff}
+@media(max-width:620px){.menu-toggle{width:37px;height:37px}.site-menu{right:10px;top:61px;width:min(260px,calc(100vw - 20px));max-height:75vh}}
+
+
+/* Final Purple Gradient identity */
+:root{--bg:#100923;--panel:#211342;--line:#65439b;--text:#fbf8ff;--muted:#c9b9e5;--a:#c084fc;--b:#8b5cf6;--c:#f0abfc}
+body{background:radial-gradient(ellipse at 12% 0%,#392064 0%,#170d2d 42%,#0d071b 100%);color:#fbf8ff}
+.topbar{background:#180d2bed;border-bottom:1px solid #68449d}
+.sidebar{background:#160c29;border-color:#4b306e}
+.sidebar .side-link{color:#e7d9ff}.side-link:first-child,.side-link.active{background:linear-gradient(100deg,#c084fc,#7652e8);box-shadow:0 6px 18px #9c4dff44}
+.panel,.content-card{background:linear-gradient(145deg,#241542,#190f30);border-color:#593a83;color:#fbf8ff}
+.welcome-banner{background:linear-gradient(110deg,#4b237b,#251344 65%,#35165d);border-color:#8a5ac1}
+.summary-card{background:linear-gradient(120deg,#38205e,#21143c);border-color:#7149a0}
+.summary-card:nth-child(2){background:linear-gradient(120deg,#29205a,#1b173e);border-color:#6251a0}
+.summary-card:nth-child(3){background:linear-gradient(120deg,#4b205b,#28153e);border-color:#8b4d9d}
+.summary-card:nth-child(4){background:linear-gradient(120deg,#55305a,#2e1a3c);border-color:#94609d}
+.btn,.help-button,.refer-card button{background:linear-gradient(110deg,#c084fc,#7657ef);color:#fff}
+.btn.secondary{background:#2c1b49;color:#f8efff;border:1px solid #7654a4}
+.site-menu{background:linear-gradient(155deg,#492477,#21113f);border-color:#a276d4}
+.site-menu a{color:#fbf5ff}.site-menu a:hover{background:linear-gradient(100deg,#bd75f4,#7359ec)}
+.hero-art{background:radial-gradient(circle at 50% 35%,#a77ae9,#54358c 48%,#1b1032 100%);border-color:#8e6abe}
+.brand-card{background:linear-gradient(145deg,#44266c,#2c1a51 55%,#7544a0);border-color:#d6b5ff;color:#fff}
+.brand-card small{color:#eadbff}
+.plan,.stat,.taskbox{background:linear-gradient(145deg,#2a1948,#1b1131);border-color:#604184;color:#fff}
+input,select{background:#160d29;color:#fff;border-color:#684b91}label{color:#e6d9f8}
+.notice{background:#392b18;border-color:#94713a;color:#ffe9b5}
+.history th,.history td{border-color:#50366f;color:#eee4ff}
+footer{color:#b5a0d5;border-color:#4c326d}
+
+</head>
+<body>
+<header class="topbar">
+ <div class="logo"><span class="brand-icon">▥</span><div>Daily Earnings 3X Plus<small>Work • Earn • Grow</small></div></div>
+ <div class="top-right"><button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">⋮</button><span class="today-label">Today • <span id="todayDate">22 Oct 2026</span></span><button class="bell" aria-label="Notifications">♧</button><div class="user-chip"><span class="avatar">U</span><span><b id="topUser">User</b><small>Member Account</small></span></div><button class="btn secondary top-login" onclick="show('login')">Login</button></div>
+</header>
+<div id="siteMenu" class="site-menu hidden" aria-label="Website pages">
+ <a href="#" onclick="goPage('home');return false">⌂ <span>Home</span></a>
+ <a href="#" onclick="goPage('dashboard');return false">▦ <span>Dashboard</span></a>
+ <a href="#" onclick="goPage('profile');return false">♙ <span>My Account</span></a>
+ <a href="#" onclick="goPage('tasks');return false">☑ <span>Daily Tasks</span></a>
+ <a href="#" onclick="goPage('deposit');return false">＋ <span>Deposit</span></a>
+ <a href="#" onclick="goPage('withdraw');return false">⇧ <span>Withdraw</span></a>
+ <a href="#" onclick="goPage('earnings');return false">↗ <span>Earnings Overview</span></a>
+ <a href="#" onclick="goPage('history');return false">▤ <span>Transaction History</span></a>
+ <a href="#" onclick="goPage('referral');return false">♧ <span>Referral</span></a>
+ <a href="#" onclick="goPage('plans');return false">♛ <span>Plans</span></a>
+ <a href="#" onclick="goPage('about');return false">ⓘ <span>About</span></a>
+ <a id="adminMenuLink" class="hidden" href="#" onclick="goPage('admin');return false">⚙ <span>Admin Panel</span></a>
+ <a href="#" onclick="goPage('login');return false">↪ <span>Login</span></a>
+</div>
+<main class="container">
+<section id="home" class="page active">
+ <div class="hero">
+  <div>
+   <h1>Daily <span class="accent">3X Plus</span> Earning</h1>
+   <p>A clear place to view task information, manage your account details, and submit deposit or withdrawal requests. We aim to keep the process understandable, with request details available in your profile.</p>
+   <div class="actions"><button class="btn" onclick="show('signup')">Create Account</button><button class="btn secondary" onclick="show('login')">Login</button></div>
+  </div>
+  <div class="hero-art"><div class="brand-card"><div class="symbol">✦</div><strong>DAILY<br><span class="accent">3X PLUS</span><br>EARNING</strong><small>TASKS • ACCOUNT • ACTIVITY</small></div></div>
+ </div>
+</section>
+
+<section id="dashboard" class="page"><div class="dash-wrap">
+ <div class="welcome-banner"><div><div class="eyebrow">MEMBER DASHBOARD</div><h1 id="dashTitle">Welcome Back, User!</h1><p id="dashWelcome">Your success is our priority. Keep going!</p></div><div class="welcome-art">✦<small>SMALL STEPS<br>BIG RESULTS</small></div></div>
+ <div class="summary-grid">
+  <div class="summary-card balance-card"><span class="summary-icon">▣</span><div><small>My Balance</small><strong id="dashBalance">PKR 0.00</strong><a href="#" onclick="show('profile');return false">View Details →</a></div></div>
+  <div class="summary-card today-card"><span class="summary-icon">◈</span><div><small>Today's Earnings</small><strong id="todayEarn">PKR 0</strong><a href="#" onclick="show('tasks');return false">View History →</a></div></div>
+  <div class="summary-card total-card"><span class="summary-icon">▥</span><div><small>Total Earnings</small><strong id="dashDeposits">PKR 0.00</strong><a href="#" onclick="show('profile');return false">View Graph →</a></div></div>
+  <div class="summary-card plan-card"><span class="summary-icon">♕</span><div><small>Active Plan</small><strong>Plan 1</strong><a href="#" onclick="show('plans');return false">View Plan →</a></div></div>
+ </div>
+ <div class="dashboard-grid">
+  <div class="content-card tasks-card"><div class="card-heading"><h3>Daily Tasks</h3><a href="#" onclick="show('tasks');return false">View All</a></div>
+   <div class="mini-task"><span class="task-icon green-icon">▶</span><div><b>Watch 5 Ads</b><small>Reward • PKR 50</small></div><button onclick="show('tasks')">Start</button></div>
+   <div class="mini-task"><span class="task-icon blue-icon">▷</span><div><b>Watch 3 Videos</b><small>Reward • PKR 40</small></div><button onclick="show('tasks')">Start</button></div>
+   <div class="mini-task"><span class="task-icon orange-icon">▣</span><div><b>Complete 2 Offers</b><small>Reward • PKR 80</small></div><button onclick="show('tasks')">Start</button></div>
+   <button class="wide-button" onclick="show('tasks')">View All Tasks</button>
+  </div>
+  <div class="content-card chart-card"><div class="card-heading"><h3>Earnings Overview</h3><span class="period-pill">7 Days</span></div><div class="chart-value" id="chartBalance">PKR 0.00 <span>Balance</span></div><svg class="earn-chart" viewBox="0 0 420 160" role="img" aria-label="Illustrative earnings chart"><defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#00d89a" stop-opacity=".28"/><stop offset="1" stop-color="#00d89a" stop-opacity="0"/></linearGradient></defs><path d="M8 130 L8 112 L65 95 L112 105 L160 70 L208 80 L255 48 L305 61 L355 28 L412 12 L412 145 L8 145Z" fill="url(#chartFill)"/><polyline points="8,112 65,95 112,105 160,70 208,80 255,48 305,61 355,28 412,12" fill="none" stroke="#00d99b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><g fill="#00d99b"><circle cx="8" cy="112" r="4"/><circle cx="65" cy="95" r="4"/><circle cx="112" cy="105" r="4"/><circle cx="160" cy="70" r="4"/><circle cx="208" cy="80" r="4"/><circle cx="255" cy="48" r="4"/><circle cx="305" cy="61" r="4"/><circle cx="355" cy="28" r="4"/><circle cx="412" cy="12" r="4"/></g></svg><div class="chart-days"><span>16 Oct</span><span>17 Oct</span><span>18 Oct</span><span>19 Oct</span><span>20 Oct</span><span>21 Oct</span><span>22 Oct</span></div></div>
+  <div class="content-card quick-card"><div class="card-heading"><h3>Quick Actions</h3></div><button class="quick-action deposit-action" onclick="show('money')">▣ &nbsp; Deposit</button><button class="quick-action withdraw-action" onclick="show('money')">⇧ &nbsp; Withdraw</button><button class="quick-action referral-action" onclick="show('about')">♧ &nbsp; Referral</button></div>
+ </div>
+ <div class="lower-grid"><div class="content-card recent-card"><div class="card-heading"><h3>Recent Transactions</h3><a href="#" onclick="show('profile');return false">View All</a></div><div id="dashRecent" class="small">No requests yet.</div></div><div class="refer-card"><div class="gift">♕</div><div><h3>Refer &amp; Earn</h3><p>Invite your friends and get bonus!</p><button onclick="show('about')">Get Link</button></div></div></div>
+ <div class="notice">For your safety: account details and requests in this HTML version are stored only in this browser. Online multi-user accounts and real payment processing require a secure server.</div>
+ <div class="dashboard-actions"><button class="btn" onclick="show('signup')">Create Account</button><button class="btn secondary" onclick="show('login')">Login</button></div>
+</div></section>
+
+<section id="signup" class="page"><div class="panel"><h2>Create Account</h2>
+ <label>Full Name</label><input id="name" placeholder="Enter your full name">
+ <label>Email Address</label><input id="email" type="email" placeholder="Enter email address">
+ <label>Password</label><input id="pass" type="password" placeholder="Create password">
+ <label>Confirm Password</label><input id="confirm" type="password" placeholder="Confirm password">
+ <button class="btn" onclick="signup()">Create Account</button><p id="signupMsg" class="small"></p>
+</div></section>
+<section id="login" class="page"><div class="panel"><h2>Login</h2>
+ <label>Email Address</label><input id="lemail" type="email" placeholder="Email address">
+ <label>Password</label><input id="lpass" type="password" placeholder="Password">
+ <button class="btn" onclick="login()">Login</button><p id="loginMsg" class="small"></p>
+</div></section>
+
+<section id="referral" class="page"><div class="panel"><h2>Refer &amp; Earn</h2>
+ <p class="muted">Invite friends to visit Daily Earnings 3X Plus. A referral reward should only be offered when the website owner has configured and funded a real referral programme.</p>
+ <div class="taskbox"><h3>Your Referral Link</h3><p class="small">اپنا لنک کاپی کرکے دوستوں کو بھیجیں۔ یہ لنک شیئر ہو سکتا ہے؛ حقیقی referral counts اور rewards کے لیے backend درکار ہے۔</p><input id="referralLinkValue" readonly value="Login first"><button class="btn" type="button" onclick="copyReferral()">Copy Referral Link</button><p id="referralMsg" class="small"></p></div>
+</div></section>
+
+<section id="about" class="page"><div class="panel"><h2>About Daily 3X Plus Earning</h2>
+ <p class="muted">Daily Earnings 3X Plus ایک ویب انٹرفیس ہے جہاں صارف اپنا اکاؤنٹ، دستیاب ٹاسکس، آمدنی کا خلاصہ، ڈپازٹ اور وِدڈرال درخواستیں اور referral معلومات دیکھ سکتا ہے۔</p><h3>How it works</h3><ol><li>اکاؤنٹ بنائیں اور لاگ اِن کریں۔</li><li>دستیاب ٹاسکس اور ان کی شرائط دیکھیں۔</li><li>ڈپازٹ کی درخواست کے ساتھ transaction ID اور رسید جمع کریں۔</li><li>وِدڈرال کی درخواست میں درست اکاؤنٹ تفصیل دیں۔</li></ol><h3>Payment Channels</h3><p class="muted">EasyPaisa اور JazzCash کی تفصیلات صرف تصدیق شدہ وصول کنندہ نمبر کے بعد استعمال کریں۔</p>
+ <div class="notice">Important: this current HTML version is a front-end interface. It does not yet connect to a live server, verify payments, or transfer money. Do not send a deposit based only on this page.</div>
+</div></section>
+
+<section id="deposit" class="page"><div class="panel"><h2>Deposit</h2>
+ <div class="two">
+  <div class="taskbox"><h3>Deposit</h3><p class="small">Deposit methods: EasyPaisa and JazzCash</p>
+   <p><b>EasyPaisa Number:</b> 03071697997</p><p><b>JazzCash:</b> Add the verified receiving number before accepting payments.</p>
+   <label>Select Plan</label><select id="plan" onchange="fillPlan()">
+    <option value="">Choose a plan</option><option value="300">Plan 1 — Rs. 300</option><option value="900">Plan 2 — Rs. 900</option><option value="3000">Plan 3 — Rs. 3,000</option>
+   </select>
+   <label>Deposit Amount (PKR)</label><input id="damount" type="number" min="1" placeholder="Enter amount">
+   <label>Transaction ID</label><input id="dref" placeholder="Enter transaction ID">
+   <label>Payment Screenshot</label><input id="dscreen" type="file" accept="image/*" onchange="previewShot(event)">
+   <img id="shotPreview" class="hidden" alt="Payment screenshot preview" style="width:100%;max-height:180px;object-fit:contain;border-radius:8px">
+   <button class="btn" onclick="deposit()">Submit Deposit Request</button><p id="dmsg" class="small"></p>
+  </div>
+ </div>
+ <div class="notice">Deposit requests are saved in this browser only and require manual payment verification.</div>
+</div></section>
+
+<section id="withdraw" class="page"><div class="panel"><h2>Withdraw</h2>
+  <div class="taskbox"><h3>Withdraw</h3><p class="small">Available methods: EasyPaisa and JazzCash</p>
+   <label>Withdrawal Method</label><select id="wmethod"><option>EasyPaisa</option><option>JazzCash</option></select>
+   <label>Account Holder Name</label><input id="wname" placeholder="Account holder name">
+   <label>Account Number</label><input id="waccount" placeholder="Mobile account number">
+   <label>Amount (PKR)</label><input id="wamount" type="number" min="1" placeholder="Enter amount">
+   <button class="btn" onclick="withdraw()">Submit Withdrawal Request</button><p id="wmsg" class="small"></p>
+  </div>
+ <div class="notice">Withdrawal requests are saved in this browser only. This page does not transfer money.</div>
+</div></section>
+
+<section id="plans" class="page"><div class="panel"><h2>Plans Information</h2>
+ <div class="grid">
+  <div class="plan"><h3>Plan 1</h3><div class="amount">Rs. 300</div><p class="muted">Proposed daily amount: Rs. 70 • 30 days</p></div>
+  <div class="plan"><h3>Plan 2</h3><div class="amount">Rs. 900</div><p class="muted">Proposed daily amount: Rs. 300 • 30 days</p></div>
+  <div class="plan"><h3>Plan 3</h3><div class="amount">Rs. 3,000</div><p class="muted">Proposed daily amount: Rs. 600 • 30 days</p></div>
+ </div>
+ <div class="notice">These figures are displayed as plan information only, not guaranteed returns. Actual deposits and withdrawals require a secure server, payment verification, and an operational payment process.</div>
+</div></section>
+
+<section id="tasks" class="page"><div class="panel"><h2>Tasks &amp; Videos</h2>
+ <p class="muted">Add up to three video task links below. They are saved only in this browser on this device.</p>
+ <div class="two">
+  <div><label>Video 1 URL</label><input id="v1" placeholder="Paste video URL"><label>Video 2 URL</label><input id="v2" placeholder="Paste video URL"><label>Video 3 URL</label><input id="v3" placeholder="Paste video URL"><button class="btn" onclick="saveVideos()">Save Video Tasks</button><p id="vmsg" class="small"></p></div>
+  <div><div class="notice">Admin note: this is a local task editor, not a secure online admin dashboard. Changes made here will not appear on other users' devices until a server and database are connected.</div><div id="videoList"></div></div>
+ </div>
+</div></section>
+
+<section id="earnings" class="page"><div class="panel"><h2>Earnings Overview</h2><p class="muted">Your balance and earnings summary.</p><div class="grid"><div class="stat"><div class="small">Available Balance</div><h2 id="eBalance">Rs. 0.00</h2></div><div class="stat"><div class="small">Today's Earnings</div><h2 id="eToday">Rs. 0.00</h2></div><div class="stat"><div class="small">Total Earnings</div><h2 id="eTotal">Rs. 0.00</h2></div></div><div class="content-card"><h3>Balance Overview</h3><p class="muted">Your earnings activity and account totals appear here.</p><button class="btn" onclick="goPage('tasks')">View Daily Tasks</button></div></div></section>
+<section id="history" class="page"><div class="panel"><h2>Transaction History</h2><p class="muted">View your deposit, withdrawal, and task activity.</p><div id="historyPage"></div></div></section>
+<section id="profile" class="page"><div class="panel"><h2>My Profile &amp; Activity</h2><div id="profileText" class="muted">Please create an account and log in first.</div>
+ <div class="grid"><div class="stat"><div class="small">Available Balance</div><h2 id="pBalance">Rs. 0.00</h2></div><div class="stat"><div class="small">Total Task Earnings</div><h2 id="pEarn">Rs. 0.00</h2></div><div class="stat"><div class="small">Completed Tasks</div><h2 id="pDone">0</h2></div></div>
+ <h3>Request History</h3><div id="historyList"></div>
+</div></section>
+<section id="admin" class="page"><div class="panel"><h2>Admin Panel</h2>
+ <p class="muted">یہ حصہ ویب سائٹ کے مالک کے لیے ہے۔ یہاں صارفین کی ڈپازٹ اور وِدڈرال درخواستیں دیکھی اور منظور کی جا سکتی ہیں۔</p>
+ <div class="notice">اہم: اس وقت یہ HTML فائل درخواستیں اسی براؤزر میں محفوظ کرتی ہے جہاں صارف نے جمع کروائی ہوں۔ تمام صارفین کے اسکرین شاٹس اور بیلنس ایک جگہ دیکھنے کے لیے اسے آن لائن Database اور محفوظ Admin Login سے جوڑنا ضروری ہے۔</div>
+ <div id="adminLock"><label>Admin Password</label><input id="adminPin" type="password" placeholder="Enter admin password"><button class="btn" onclick="adminLogin()">Open Admin System</button><p id="adminMsg" class="small"></p></div>
+ <div id="adminTools" class="hidden">
+  <h3>Current browser account</h3><p id="adminUser" class="small">No account on this device.</p>
+  <label>Balance میں تبدیلی (PKR)</label><input id="balanceChange" type="number" placeholder="مثلاً 300 یا -100">
+  <label>وجہ</label><input id="balanceReason" placeholder="Deposit approved / adjustment / withdrawal">
+  <button class="btn" onclick="adjustBalance()">Apply Balance Change</button><p id="balanceMsg" class="small"></p>
+  <h3>Deposit / Withdrawal Requests</h3><div id="adminRequests"></div>
+  <button class="btn secondary" onclick="adminLogout()">Close Admin Panel</button>
+ </div>
+</div></section>
+</main>
+<footer>Daily 3X Plus Earning</footer>
+<script>
+function setActive(el){document.querySelectorAll(".side-link").forEach(x=>x.classList.remove("active"));if(el)el.classList.add("active")}
+document.addEventListener("click",e=>{let m=document.getElementById("siteMenu"),b=document.querySelector(".menu-toggle");if(m&&!m.classList.contains("hidden")&&!m.contains(e.target)&&!b.contains(e.target))m.classList.add("hidden")});
+document.addEventListener("DOMContentLoaded",()=>{let d=document.getElementById("todayDate");if(d)d.textContent=new Date().toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"})});
+const KEY="daily_earnings_3x_plus_v2";
+let user=JSON.parse(localStorage.getItem(KEY)||"null");
+let requests=JSON.parse(localStorage.getItem(KEY+"_requests")||"[]");
+let videos=JSON.parse(localStorage.getItem(KEY+"_videos")||"[]");
+function save(){localStorage.setItem(KEY,JSON.stringify(user))}
+function saveRequests(){localStorage.setItem(KEY+"_requests",JSON.stringify(requests))}
+let ownerAdminUnlocked=false;
+function toggleMenu(){document.getElementById("siteMenu").classList.toggle("hidden")}
+function goPage(id){show(id);document.getElementById("siteMenu").classList.add("hidden")}
+function show(id){if(id==="admin"&&!ownerAdminUnlocked){alert("Admin Panel صرف ویب سائٹ کے مالک کے لیے ہے۔");id="home";}document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));let page=document.getElementById(id);if(page)page.classList.add("active");if(id==="profile")renderProfile();if(id==="dashboard")renderDashboard();if(id==="tasks")renderVideos();if(id==="history"){renderProfile();let h=document.getElementById("historyPage"),src=document.getElementById("historyList");if(h&&src)h.innerHTML=src.innerHTML}if(id==="earnings"){if(user){document.getElementById("eBalance").textContent="Rs. "+Number(user.balance||0).toFixed(2);document.getElementById("eToday").textContent="Rs. 0.00";document.getElementById("eTotal").textContent="Rs. "+Number(user.earnings||0).toFixed(2)}}if(id==="admin"&&document.getElementById("adminTools").classList.contains("hidden")){}else if(id==="admin")renderAdmin();window.scrollTo(0,0)}
+function signup(){let n=document.getElementById("name").value.trim(),e=document.getElementById("email").value.trim().toLowerCase(),p=document.getElementById("pass").value,c=document.getElementById("confirm").value;let m=document.getElementById("signupMsg");if(!n||!e||!p||!c){m.textContent="Please complete all fields.";return}if(p!==c){m.textContent="Passwords do not match.";return}user={name:n,email:e,password:p,balance:0,earnings:0,done:[]};save();m.textContent="Account created on this device. Please log in."}
+function login(){let m=document.getElementById("loginMsg");if(!user){m.textContent="Please create an account first.";return}if(document.getElementById("lemail").value.trim().toLowerCase()!==user.email||document.getElementById("lpass").value!==user.password){m.textContent="Email or password is incorrect.";return}m.textContent="Login successful.";show("dashboard")}
+function fillPlan(){let x=document.getElementById("plan").value;if(x)document.getElementById("damount").value=x}
+function previewShot(e){let f=e.target.files[0],img=document.getElementById("shotPreview");if(!f){img.classList.add("hidden");return}let r=new FileReader();r.onload=()=>{img.src=r.result;img.classList.remove("hidden")};r.readAsDataURL(f)}
+function compressScreenshot(file){return new Promise((resolve,reject)=>{let reader=new FileReader();reader.onerror=reject;reader.onload=()=>{let img=new Image();img.onerror=reject;img.onload=()=>{let scale=Math.min(1,1100/Math.max(img.width,img.height)),canvas=document.createElement("canvas");canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);resolve(canvas.toDataURL("image/jpeg",0.68))};img.src=reader.result};reader.readAsDataURL(file)})}
+async function deposit(){let m=document.getElementById("dmsg"),a=Number(document.getElementById("damount").value),ref=document.getElementById("dref").value.trim(),file=document.getElementById("dscreen").files[0];if(!user){m.textContent="Please log in first.";return}if(a<=0||!ref||!file){m.textContent="Enter amount, transaction ID, and screenshot.";return}if(file.size>8*1024*1024){m.textContent="Please select a screenshot smaller than 8 MB.";return}try{m.textContent="Saving your request...";let screenshotData=await compressScreenshot(file);requests.push({type:"Deposit",method:"EasyPaisa",amount:a,reference:ref,screenshotName:file.name,screenshotData,userEmail:user.email,userName:user.name,status:"Pending",date:new Date().toLocaleString()});saveRequests();m.textContent="Deposit request submitted. Please wait for payment verification.";renderDashboard()}catch(e){m.textContent="Screenshot could not be saved. Please try another image."}}
+function withdraw(){let m=document.getElementById("wmsg"),a=Number(document.getElementById("wamount").value),acc=document.getElementById("waccount").value.trim(),nm=document.getElementById("wname").value.trim();if(!user){m.textContent="Please log in first.";return}if(a<=0||!acc||!nm){m.textContent="Enter account holder name, account number, and amount.";return}requests.push({type:"Withdrawal",method:document.getElementById("wmethod").value,amount:a,account:acc,holder:nm,userEmail:user.email,userName:user.name,status:"Pending",date:new Date().toLocaleString()});saveRequests();m.textContent="Withdrawal request saved on this device only. No money has been transferred."}
+function saveVideos(){videos=[1,2,3].map(i=>document.getElementById("v"+i).value.trim()).filter(Boolean).slice(0,3);localStorage.setItem(KEY+"_videos",JSON.stringify(videos));document.getElementById("vmsg").textContent="Video links saved on this device.";renderVideos()}
+function renderVideos(){let box=document.getElementById("videoList");box.innerHTML=videos.length?videos.map((u,i)=>`<div class="taskrow"><b>Video Task ${i+1}</b><br><a href="${safeURL(u)}" target="_blank" rel="noopener" style="color:#8debd4;overflow-wrap:anywhere">Open video</a></div>`).join(""):"<p class='small'>No video links added yet.</p>";}
+function safeURL(u){try{let x=new URL(u);return ["http:","https:"].includes(x.protocol)?x.href:"#"}catch(e){return "#"}}
+function makeReferralLink(){if(!user)return "Login first to create your personal referral link.";let base=location.href.split("#")[0];return base+"?ref="+encodeURIComponent(user.email.split("@")[0].replace(/[^a-z0-9]/gi,"").toUpperCase());}
+function refreshReferral(){let v=makeReferralLink();let a=document.getElementById("homeReferralLink");if(a)a.value=v;let b=document.getElementById("referralLinkValue");if(b)b.value=v;}
+function copyReferral(){refreshReferral();let v=document.getElementById("homeReferralLink").value;if(!user){document.getElementById("homeReferralMsg").textContent="پہلے لاگ اِن کریں۔";return}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(()=>document.getElementById("homeReferralMsg").textContent="Referral link copied.").catch(()=>document.getElementById("homeReferralMsg").textContent=v)}else{document.getElementById("homeReferralLink").select();document.execCommand("copy");document.getElementById("homeReferralMsg").textContent="Referral link copied."}}
+function renderDashboard(){
+ let welcome=document.getElementById("dashWelcome"),bal=document.getElementById("dashBalance"),deps=document.getElementById("dashDeposits"),recent=document.getElementById("dashRecent");
+ let amount=Number(user&&user.balance||0);bal.textContent="PKR "+amount.toFixed(2);document.getElementById("chartBalance").textContent="PKR "+amount.toFixed(2)+" Balance";
+ if(!user){welcome.textContent="Your success is our priority. Keep going!";document.getElementById("dashTitle").textContent="Welcome Back, User!";deps.textContent="PKR 0.00";document.getElementById("topUser").textContent="User";recent.textContent="No requests yet.";return;}
+ document.getElementById("dashTitle").textContent="Welcome Back, "+user.name+"!";document.getElementById("topUser").textContent=user.name;welcome.textContent="Your account is ready. Keep going!";
+ let mine=requests.filter(r=>r.userEmail===user.email);let d=mine.filter(r=>r.type==="Deposit"&&String(r.status).startsWith("Approved")).reduce((a,r)=>a+Number(r.amount||0),0);deps.textContent="PKR "+Number(user.earnings||d).toFixed(2);
+ recent.innerHTML=mine.length?"<table class='history'><tr><th>Type</th><th>Amount</th><th>Status</th><th>Date</th></tr>"+mine.slice(-5).reverse().map(r=>"<tr><td>"+escapeHTML(r.type)+"</td><td>PKR "+Number(r.amount||0).toFixed(2)+"</td><td>"+escapeHTML(r.status)+"</td><td>"+escapeHTML(r.date||"")+"</td></tr>").join("")+"</table>":"No requests yet.";
+}
+function renderProfile(){if(!user)return;document.getElementById("profileText").innerHTML="<b>"+escapeHTML(user.name)+"</b><br>"+escapeHTML(user.email);document.getElementById("pBalance").textContent="Rs. "+Number(user.balance||0).toFixed(2);document.getElementById("pEarn").textContent="Rs. "+Number(user.earnings||0).toFixed(2);document.getElementById("pDone").textContent=(user.done||[]).length;let h=document.getElementById("historyList");h.innerHTML=requests.length?"<table class='history'><tr><th>Type</th><th>Method</th><th>Amount</th><th>Status</th><th>Date</th></tr>"+requests.map(r=>"<tr><td>"+escapeHTML(r.type)+"</td><td>"+escapeHTML(r.method)+"</td><td>Rs. "+Number(r.amount).toFixed(2)+"</td><td>"+escapeHTML(r.status)+"</td><td>"+escapeHTML(r.date)+"</td></tr>").join("")+"</table>":"<p class='small'>No requests recorded on this device.</p>"}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+renderVideos();
+renderDashboard();
+
+function adminLogin(){let pin=document.getElementById("adminPin").value;if(pin!=="8426"){document.getElementById("adminMsg").textContent="Incorrect PIN.";return}ownerAdminUnlocked=true;document.getElementById("adminMenuLink").classList.remove("hidden");document.getElementById("adminLock").classList.add("hidden");document.getElementById("adminTools").classList.remove("hidden");renderAdmin()}
+function adminLogout(){ownerAdminUnlocked=false;document.getElementById("adminMenuLink").classList.add("hidden");document.getElementById("adminTools").classList.add("hidden");document.getElementById("adminLock").classList.remove("hidden");document.getElementById("adminPin").value="";show("home")}
+function adjustBalance(){let m=document.getElementById("balanceMsg"),change=Number(document.getElementById("balanceChange").value),reason=document.getElementById("balanceReason").value.trim();if(!user){m.textContent="اس براؤزر میں کوئی صارف اکاؤنٹ موجود نہیں۔";return}if(!Number.isFinite(change)||change===0||!reason){m.textContent="رقم میں تبدیلی اور وجہ درج کریں۔";return}if(Number(user.balance||0)+change<0){m.textContent="بیلنس صفر سے کم نہیں ہو سکتا۔";return}user.balance=Number(user.balance||0)+change;save();requests.push({type:"Admin balance adjustment",method:"Manual",amount:Math.abs(change),status:(change>0?"Added: "+reason:"Deducted: "+reason),date:new Date().toLocaleString(),userEmail:user.email,userName:user.name});saveRequests();m.textContent="اس ڈیوائس کے اکاؤنٹ کا بیلنس اپڈیٹ ہوگیا۔";document.getElementById("balanceChange").value="";document.getElementById("balanceReason").value="";renderAdmin();renderProfile();renderDashboard()}
+function processRequest(i,action){let r=requests[i];if(!r||r.status!=="Pending")return;if(!user||r.userEmail!==user.email){alert("یہ درخواست موجودہ ڈیوائس کے لاگ اِن صارف سے متعلق نہیں ہے۔");return}if(action==="approve"&&r.type==="Deposit"){user.balance=Number(user.balance||0)+Number(r.amount);r.status="Approved — balance added";save()}else if(action==="complete"&&r.type==="Withdrawal"){if(Number(user.balance||0)<Number(r.amount)){alert("بیلنس کافی نہیں ہے۔ پہلے دستی طور پر ادائیگی اور بیلنس کی تصدیق کریں۔");return}user.balance=Number(user.balance||0)-Number(r.amount);r.status="Marked paid — balance deducted";save()}else{r.status="Rejected"}saveRequests();renderAdmin();renderProfile();renderDashboard()}
+function renderAdmin(){let u=document.getElementById("adminUser");u.textContent=user?user.name+" • "+user.email+" • Balance: Rs. "+Number(user.balance||0).toFixed(2):"No account on this device.";let box=document.getElementById("adminRequests");if(!requests.length){box.innerHTML="<p class='small'>No requests saved in this browser.</p>";return}box.innerHTML=requests.map((r,i)=>`<div class="taskbox" style="margin:12px 0"><b>${escapeHTML(r.type)}</b><p class="small">User: ${escapeHTML(r.userName||"")} (${escapeHTML(r.userEmail||"")})<br>Amount: Rs. ${Number(r.amount||0).toFixed(2)}<br>Method: ${escapeHTML(r.method||"")}<br>Details: ${escapeHTML(r.reference||r.account||"")}<br>Screenshot file: ${escapeHTML(r.screenshotName||"Not saved") }<br>Status: ${escapeHTML(r.status)}<br>${escapeHTML(r.date||"")}</p>${r.screenshotData?`<b>Payment Screenshot:</b><img class="request-shot" src="${r.screenshotData}" alt="User payment screenshot">`:""}${r.status==="Pending"?`<button class="btn" onclick="processRequest(${i},'${r.type==='Deposit'?'approve':'complete'}')">${r.type==='Deposit'?'Approve & Add Balance':'Mark Paid & Deduct Balance'}</button> <button class="btn secondary" onclick="processRequest(${i},'reject')">Reject</button>`:""}</div>`).join("")}
+
+</script>
+</body></html>
